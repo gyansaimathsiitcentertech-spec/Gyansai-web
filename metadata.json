@@ -1,0 +1,6 @@
+{
+  "name": "Gyansai Maths IIT Center",
+  "description": "Structured IIT-JEE, MHT-CET, Board Mathematics, BITSAT, NDA, Foundation, and Engineering Mathematics coaching by Prof. Taterao Kendre (KT Sir) in Chhatrapati Sambhajinagar since 2009.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

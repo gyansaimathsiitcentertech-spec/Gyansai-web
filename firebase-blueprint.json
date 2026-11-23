@@ -1,0 +1,337 @@
+{
+  "entities": {
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Core institutional profile, branding, navigation colors, announcement bar, CTA buttons, hero/about intro, and contact details stored at settings/site.",
+      "type": "object",
+      "properties": {
+        "institute_name": { "type": "string", "minLength": 2, "maxLength": 140 },
+        "tagline": { "type": "string", "maxLength": 300 },
+        "phone": { "type": "string", "minLength": 7, "maxLength": 40 },
+        "secondary_phone": { "type": "string", "maxLength": 40 },
+        "email": { "type": "string", "minLength": 5, "maxLength": 120 },
+        "whatsapp": { "type": "string", "maxLength": 30 },
+        "address": { "type": "string", "minLength": 5, "maxLength": 300 },
+        "office_hours": { "type": "string", "maxLength": 120 },
+        "logo_url": { "type": "string", "maxLength": 500 },
+        "favicon_url": { "type": "string", "maxLength": 500 },
+        "logo_width": { "type": "number" },
+        "logo_height": { "type": "number" },
+        "header_bg": { "type": "string", "maxLength": 20 },
+        "header_text_color": { "type": "string", "maxLength": 20 },
+        "nav_active_color": { "type": "string", "maxLength": 20 },
+        "announcement_enabled": { "type": "boolean" },
+        "announcement_text": { "type": "string", "maxLength": 260 },
+        "announcement_bg": { "type": "string", "maxLength": 20 },
+        "announcement_text_color": { "type": "string", "maxLength": 20 },
+        "show_header_cta": { "type": "boolean" },
+        "header_cta_label": { "type": "string", "maxLength": 60 },
+        "header_cta_link": { "type": "string", "maxLength": 200 },
+        "show_floating_cta": { "type": "boolean" },
+        "floating_cta_label": { "type": "string", "maxLength": 60 },
+        "floating_cta_link": { "type": "string", "maxLength": 200 },
+        "hero_title": { "type": "string", "maxLength": 160 },
+        "hero_subtitle": { "type": "string", "maxLength": 260 },
+        "about_heading": { "type": "string", "maxLength": 200 },
+        "about_intro": { "type": "string", "maxLength": 600 },
+        "footer_about": { "type": "string", "maxLength": 400 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["institute_name", "phone", "email", "address"]
+    },
+    "SitePageSettings": {
+      "title": "SitePageSettings",
+      "description": "Extended CMS settings for founder message, courses page header, homepage section visibility, stats counters, admission popup, SEO metadata, footer copyright, and map query stored at settings/pages.",
+      "type": "object",
+      "properties": {
+        "founder_name": { "type": "string", "maxLength": 120 },
+        "founder_message": { "type": "string", "maxLength": 800 },
+        "courses_page_title": { "type": "string", "maxLength": 160 },
+        "courses_page_subtitle": { "type": "string", "maxLength": 300 },
+        "show_quick_links": { "type": "boolean" },
+        "show_value_offerings": { "type": "boolean" },
+        "show_results_section": { "type": "boolean" },
+        "show_lectures_section": { "type": "boolean" },
+        "show_courses_section": { "type": "boolean" },
+        "show_location_section": { "type": "boolean" },
+        "stat_selections_value": { "type": "string", "maxLength": 30 },
+        "stat_selections_label": { "type": "string", "maxLength": 120 },
+        "stat_percentile_value": { "type": "string", "maxLength": 30 },
+        "stat_percentile_label": { "type": "string", "maxLength": 120 },
+        "popup_enabled": { "type": "boolean" },
+        "popup_title": { "type": "string", "maxLength": 140 },
+        "popup_body": { "type": "string", "maxLength": 500 },
+        "popup_cta_label": { "type": "string", "maxLength": 60 },
+        "popup_cta_link": { "type": "string", "maxLength": 200 },
+        "seo_title": { "type": "string", "maxLength": 140 },
+        "seo_description": { "type": "string", "maxLength": 300 },
+        "seo_keywords": { "type": "string", "maxLength": 300 },
+        "footer_copyright": { "type": "string", "maxLength": 200 },
+        "map_query": { "type": "string", "maxLength": 300 },
+        "exam_portal_url": { "type": "string", "maxLength": 300 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Course": {
+      "title": "Course",
+      "description": "Academic or competitive exam coaching course offered by Gyansai Maths IIT Center.",
+      "type": "object",
+      "properties": {
+        "slug": { "type": "string", "minLength": 2, "maxLength": 120, "pattern": "^[a-z0-9-]+$" },
+        "name": { "type": "string", "minLength": 2, "maxLength": 160 },
+        "category": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "class_level": { "type": "string", "maxLength": 80 },
+        "duration": { "type": "string", "maxLength": 60 },
+        "target_exams": { "type": "string", "maxLength": 200 },
+        "subjects": { "type": "string", "maxLength": 200 },
+        "batch_timings": { "type": "string", "maxLength": 120 },
+        "description": { "type": "string", "maxLength": 1500 },
+        "highlights": { "type": "string", "maxLength": 1500 },
+        "eligibility": { "type": "string", "maxLength": 500 },
+        "methodology": { "type": "string", "maxLength": 1200 },
+        "admission_status": { "type": "string", "enum": ["open", "closing_soon", "closed"] },
+        "image_url": { "type": "string", "maxLength": 500 },
+        "display_order": { "type": "number" },
+        "is_featured": { "type": "boolean" },
+        "is_published": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["slug", "name", "category", "admission_status", "is_published"]
+    },
+    "ExamNotice": {
+      "title": "ExamNotice",
+      "description": "Upcoming scholarship test, aptitude test, or mock examination announcement.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 2, "maxLength": 160 },
+        "course_category": { "type": "string", "maxLength": 80 },
+        "class_level": { "type": "string", "maxLength": 80 },
+        "exam_date": { "type": "string", "maxLength": 40 },
+        "exam_time": { "type": "string", "maxLength": 40 },
+        "duration_minutes": { "type": "number" },
+        "mode": { "type": "string", "maxLength": 60 },
+        "syllabus": { "type": "string", "maxLength": 1000 },
+        "instructions": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "enum": ["open", "upcoming", "completed"] },
+        "registration_url": { "type": "string", "maxLength": 500 },
+        "display_order": { "type": "number" },
+        "is_published": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "class_level", "exam_date", "status", "is_published"]
+    },
+    "StudentResult": {
+      "title": "StudentResult",
+      "description": "Verified student academic achievement and rank record.",
+      "type": "object",
+      "properties": {
+        "student_name": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "achievement_title": { "type": "string", "minLength": 2, "maxLength": 160 },
+        "score": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "category": { "type": "string", "maxLength": 80 },
+        "class_level": { "type": "string", "maxLength": 60 },
+        "academic_year": { "type": "string", "maxLength": 30 },
+        "college_admitted": { "type": "string", "maxLength": 160 },
+        "photo_url": { "type": "string", "maxLength": 500 },
+        "display_order": { "type": "number" },
+        "is_featured": { "type": "boolean" },
+        "is_published": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["student_name", "achievement_title", "score", "category", "academic_year", "is_published"]
+    },
+    "VideoLecture": {
+      "title": "VideoLecture",
+      "description": "Recorded concept or problem-solving lecture for revision.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 2, "maxLength": 180 },
+        "subject": { "type": "string", "maxLength": 80 },
+        "topic": { "type": "string", "maxLength": 120 },
+        "class_level": { "type": "string", "maxLength": 80 },
+        "teacher_name": { "type": "string", "maxLength": 100 },
+        "duration_label": { "type": "string", "maxLength": 40 },
+        "video_url": { "type": "string", "maxLength": 500 },
+        "thumbnail_url": { "type": "string", "maxLength": 500 },
+        "summary": { "type": "string", "maxLength": 800 },
+        "display_order": { "type": "number" },
+        "is_published": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "subject", "class_level", "is_published"]
+    },
+    "FacultyMember": {
+      "title": "FacultyMember",
+      "description": "Faculty mentor profile at Gyansai Maths IIT Center.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "role": { "type": "string", "maxLength": 120 },
+        "subject": { "type": "string", "maxLength": 100 },
+        "qualification": { "type": "string", "maxLength": 160 },
+        "experience": { "type": "string", "maxLength": 80 },
+        "bio": { "type": "string", "maxLength": 1000 },
+        "photo_url": { "type": "string", "maxLength": 500 },
+        "display_order": { "type": "number" },
+        "is_published": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "role", "subject", "is_published"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "Approved student or parent feedback.",
+      "type": "object",
+      "properties": {
+        "display_name": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "role_or_class": { "type": "string", "maxLength": 140 },
+        "outcome": { "type": "string", "maxLength": 140 },
+        "quote": { "type": "string", "minLength": 10, "maxLength": 1200 },
+        "rating": { "type": "number" },
+        "display_order": { "type": "number" },
+        "is_published": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["display_name", "role_or_class", "quote", "is_published"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Institute classroom, study hall, or event photograph.",
+      "type": "object",
+      "properties": {
+        "album": { "type": "string", "maxLength": 80 },
+        "title": { "type": "string", "minLength": 2, "maxLength": 140 },
+        "caption": { "type": "string", "maxLength": 400 },
+        "file_url": { "type": "string", "minLength": 2, "maxLength": 500 },
+        "display_order": { "type": "number" },
+        "is_published": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["album", "title", "file_url", "is_published"]
+    },
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "Study guidance article or institute notice.",
+      "type": "object",
+      "properties": {
+        "slug": { "type": "string", "minLength": 2, "maxLength": 140, "pattern": "^[a-z0-9-]+$" },
+        "title": { "type": "string", "minLength": 4, "maxLength": 180 },
+        "category": { "type": "string", "maxLength": 80 },
+        "excerpt": { "type": "string", "maxLength": 400 },
+        "content": { "type": "string", "maxLength": 12000 },
+        "featured_image_url": { "type": "string", "maxLength": 500 },
+        "author": { "type": "string", "maxLength": 100 },
+        "published_date": { "type": "string", "maxLength": 30 },
+        "read_time": { "type": "string", "maxLength": 30 },
+        "is_published": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["slug", "title", "category", "excerpt", "content", "published_date", "is_published"]
+    },
+    "Enquiry": {
+      "title": "Enquiry",
+      "description": "Prospective student or parent callback request containing PII (Admin-only reads).",
+      "type": "object",
+      "properties": {
+        "student_name": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "parent_name": { "type": "string", "maxLength": 120 },
+        "phone": { "type": "string", "minLength": 10, "maxLength": 20, "pattern": "^[+0-9\\s()-]{10,20}$" },
+        "email": { "type": "string", "maxLength": 120 },
+        "class_level": { "type": "string", "maxLength": 80 },
+        "course_name": { "type": "string", "maxLength": 160 },
+        "preferred_batch": { "type": "string", "maxLength": 80 },
+        "message": { "type": "string", "maxLength": 1000 },
+        "source": { "type": "string", "maxLength": 60 },
+        "status": { "type": "string", "enum": ["new", "contacted", "converted", "closed"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["student_name", "phone", "status", "createdAt"]
+    },
+    "AdmissionApplication": {
+      "title": "AdmissionApplication",
+      "description": "Formal admission application with reference code and PII (Admin-only reads).",
+      "type": "object",
+      "properties": {
+        "reference_code": { "type": "string", "minLength": 6, "maxLength": 20, "pattern": "^GSM-[A-Z0-9]{4,12}$" },
+        "student_name": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "parent_name": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "phone": { "type": "string", "minLength": 10, "maxLength": 20, "pattern": "^[+0-9\\s()-]{10,20}$" },
+        "email": { "type": "string", "maxLength": 120 },
+        "class_level": { "type": "string", "minLength": 2, "maxLength": 80 },
+        "course_name": { "type": "string", "maxLength": 160 },
+        "preferred_batch": { "type": "string", "maxLength": 80 },
+        "school": { "type": "string", "maxLength": 160 },
+        "address": { "type": "string", "maxLength": 300 },
+        "message": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "enum": ["pending", "reviewed", "confirmed", "archived"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["reference_code", "student_name", "parent_name", "phone", "class_level", "status", "createdAt"]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized institute administrator registry document.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "minLength": 5, "maxLength": 120 },
+        "role": { "type": "string", "enum": ["admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/settings/site": {
+      "schema": { "$ref": "#/entities/SiteSettings" },
+      "description": "Core institute settings, branding, header colors, announcement bar, CTAs, hero/about intro, and contact details."
+    },
+    "/settings/pages": {
+      "schema": { "$ref": "#/entities/SitePageSettings" },
+      "description": "Extended CMS settings for founder message, courses header, homepage visibility toggles, counter stats, popup, SEO, copyright, and map query."
+    },
+    "/courses/{courseId}": {
+      "schema": { "$ref": "#/entities/Course" },
+      "description": "Published coaching courses and programmes."
+    },
+    "/exams/{examId}": {
+      "schema": { "$ref": "#/entities/ExamNotice" },
+      "description": "Upcoming scholarship and assessment exam schedules."
+    },
+    "/results/{resultId}": {
+      "schema": { "$ref": "#/entities/StudentResult" },
+      "description": "Verified student achievements and ranks."
+    },
+    "/lectures/{lectureId}": {
+      "schema": { "$ref": "#/entities/VideoLecture" },
+      "description": "Recorded mathematics and science revision lectures."
+    },
+    "/faculty/{facultyId}": {
+      "schema": { "$ref": "#/entities/FacultyMember" },
+      "description": "Institute faculty and mentor profiles."
+    },
+    "/testimonials/{testimonialId}": {
+      "schema": { "$ref": "#/entities/Testimonial" },
+      "description": "Approved student and parent testimonials."
+    },
+    "/gallery_media/{mediaId}": {
+      "schema": { "$ref": "#/entities/GalleryItem" },
+      "description": "Institute photographs and campus gallery."
+    },
+    "/blogs/{blogId}": {
+      "schema": { "$ref": "#/entities/BlogPost" },
+      "description": "Study guidance and newsroom articles."
+    },
+    "/enquiries/{enquiryId}": {
+      "schema": { "$ref": "#/entities/Enquiry" },
+      "description": "Student/parent enquiry submissions (write-only for public, admin-only reads)."
+    },
+    "/admissions/{admissionId}": {
+      "schema": { "$ref": "#/entities/AdmissionApplication" },
+      "description": "Student admission applications (write-only for public, admin-only reads)."
+    },
+    "/admins/{adminUid}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Authorized institute administrators."
+    }
+  }
+}
